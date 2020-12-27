@@ -188,7 +188,7 @@ void printExellentStudents(char fileName[])
     student st;
 
 
-    if ((file = fopen(fileName, "r")) == NULL)
+    if ((file = fopen(fileName, "a+")) == NULL)
     {
         printf("\nCannot open file.\n");
     }
@@ -199,7 +199,11 @@ void printExellentStudents(char fileName[])
         {
             if(st.avgGrade == 8 || st.avgGrade == 9 || st.avgGrade == 10)
             {
+            fprintf(file, "\n------Exellent students----------\n");
             printf("\n%s %d %d %d %d %d %d %lf\n", st.name, st.yearOfBirdth, st.group,
+             st.grades[0], st.grades[1], st.grades[2], st.grades[3], st.avgGrade);
+
+             fprintf(file, "%s %d %d %d %d %d %d %f\n", st.name, st.yearOfBirdth, st.group,
              st.grades[0], st.grades[1], st.grades[2], st.grades[3], st.avgGrade);
             }
         }
