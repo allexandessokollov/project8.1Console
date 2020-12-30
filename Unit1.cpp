@@ -41,7 +41,7 @@ int main()
 
     while(toSwitch)
     {
-        printf("Enter 1 to create file\nEnter 2 to show data\n");
+        printf("Enter 1 to create file\nEnter 2 show data (if file created)\n");
         printf("Enter 3 to add element\n");
         printf("Enter 4 to see exellent students\nEnter 5 to edit data\n");
         printf("Enter 6 to close app\n");
@@ -108,6 +108,8 @@ void addElement(char fileName[])
     FILE *file;
     student st;
 
+
+
     if ((file = fopen(fileName, "a+")) == NULL)
     {
         printf("\nCannot open file.\n");
@@ -149,7 +151,6 @@ void showDataFromFile(char fileName[])
 {
     FILE *file;
     student st;
-
 
     if ((file = fopen(fileName, "r")) == NULL)
     {
@@ -275,12 +276,13 @@ void editData(char fileName[])
                   &st.grades[2], &st.grades[3],
                   &st.avgGrade))!= EOF)
         {
-            printf("\n%d %s %d %d %d %d %d %d %lf\n", counter++,
+            printf("\n%d %s %d %d %d %d %d %d %lf\n", counter,
             st.name, st.yearOfBirdth, st.group,
             st.grades[0], st.grades[1],
             st.grades[2], st.grades[3], st.avgGrade);
 
             stArr[counter] = st;
+            counter++;
         }
     }
 
